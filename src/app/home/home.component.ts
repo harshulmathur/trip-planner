@@ -22,4 +22,7 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('user');
     this.ngOnInit();
   }
+  onNew(){
+    this.router.navigate(['create-new-itinerary'])
+  }
 }

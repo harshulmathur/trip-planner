@@ -10,12 +10,14 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import {enviroments} from './enviroments/enviroments';
 import { DataService } from './services/data.service';
+import { NewItineraryComponent } from './new-itinerary/new-itinerary.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    NewItineraryComponent
   ],
   imports: [
     provideFirestore(() => getFirestore()),

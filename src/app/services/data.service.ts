@@ -8,7 +8,7 @@ export class DataService {
   constructor(public firestore : Firestore) { }
   userRef = collection(this.firestore,'users');
   async createUser(name:string,email:string,password:string){
-    const userSnap = await addDoc(collection(this.firestore,'users'),{
+    const userSnap = await addDoc(this.userRef,{
       name:name,
       email:email,
       password: password
