@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import {firebaseConfig} from './enviroments/enviroments';
+import {enviroments} from './enviroments/enviroments';
 import { DataService } from './services/data.service';
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { DataService } from './services/data.service';
   ],
   imports: [
     provideFirestore(() => getFirestore()),
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirebaseApp(() => initializeApp(enviroments.firebaseConfig)),
     BrowserModule,
     AppRoutingModule
   ],
