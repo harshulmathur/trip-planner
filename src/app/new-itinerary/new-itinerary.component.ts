@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { newDest } from './newDest';
-import { toArray } from 'rxjs';
+import { ApiServiceService } from '../services/APIS/api-service.service';
 @Component({
   selector: 'app-new-itinerary',
   templateUrl: './new-itinerary.component.html',
@@ -12,7 +12,7 @@ export class NewItineraryComponent implements OnInit {
   src = '';
   dest: newDest[] = [];
   isNewDest = false;
-  constructor(private router:Router){}
+  constructor(private router:Router,private hotels:ApiServiceService){}
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
     let lists = localStorage.getItem('list');
