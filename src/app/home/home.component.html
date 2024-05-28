@@ -1,6 +1,12 @@
 
 <div id="home_div">
 <h2>TripPlanner</h2>
-<button (click)="loginHandler()">Login</button>
-<button (click)="signupHandler()">Sign Up</button>
+<div *ngIf="!user;else home">
+    <button (click)="loginHandler()">Login</button>
+    <button (click)="signupHandler()">Sign Up</button>
+</div>
+<ng-template #home>
+    <h3>Hello {{user}}</h3>
+    <button (click)="logout()">Log out</button>
+</ng-template>
 </div>
