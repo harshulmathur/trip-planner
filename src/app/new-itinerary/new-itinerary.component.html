@@ -1,1 +1,29 @@
-<p>new-itinerary works!</p>
+<div>
+    <div>
+        <label>Source</label>
+        <input #srcCity type="text"/>
+    </div>
+    <div *ngIf="dest.length>0">
+
+    
+    <ul class="d-flex row" *ngFor="let i of dest;index as idx">
+        <li class="col-1">
+            Destination-{{idx+1}} :
+            <p>{{i['name']}}</p> 
+            <p> from : {{i['from']}} - to : {{i['to']}} </p>
+            <button (click)="delDest(idx)">Delete</button>
+        </li>
+    </ul>
+</div>
+    <button (click)="isNewDest=true">Add dest</button>
+    <div *ngIf="isNewDest">
+        <label>Dest Name: </label>
+        <input #destName type="text"/>
+        <label>From date: </label>
+        <input #fromDate type="date"/>
+        <label>To date: </label>
+        <input #toDate type="date"/>
+        <button (click)="isNewDest=false">Cancel</button>
+        <button (click)="addNewDest(destName.value,fromDate.value,toDate.value)">Save</button>
+    </div>
+</div>
