@@ -7,10 +7,22 @@
 </div>
 <ng-template #home>
     <h3>Hello {{user}}</h3>
+    <button (click)="onNew()">New</button>
     <button (click)="logout()">Log out</button>
     <div>
         <h3>Itineries</h3>
-        <button (click)="onNew()">New</button>
+        <div *ngIf="itnryList?.length">
+            <div *ngFor="let i of itnryList">
+                <div *ngFor="let j of i;index as idx">
+                    <p>{{idx}}</p>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </ng-template>
+<!-- <div>
+    <input #city type="text" />
+    <button (click)="getHotels(city.value)">Go</button>
+</div> -->
 </div>

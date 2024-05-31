@@ -1,21 +1,22 @@
-<div>
-    <div>
+<div class="container m-3 d-flex row m-1">
+    <!-- <div class="col 12">
         <label>Source</label>
         <input #srcCity type="text"/>
-    </div>
-    <div *ngIf="dest.length>0">
+    </div> -->
+    <h3 class="m-4">Create New Itinerary Here</h3>
+    <div *ngIf="dest.length>0" class="d-flex">
 
     
-    <ul class="d-flex row" *ngFor="let i of dest;index as idx">
-        <li class="col-1">
-            Destination-{{idx+1}} :
-            <p>{{i['name']}}</p> 
-            <p> from : {{i['from']}} - to : {{i['to']}} </p>
-            <button (click)="delDest(idx)">Delete</button>
-        </li>
-    </ul>
+    <div class="d-flex row" *ngFor="let i of dest;index as idx">
+        <div class="col-6 p-1">
+            <b>{{i['name']}}</b> 
+            <p> from : {{i['from']}} </p> <p>to : {{i['to']}} </p>
+            <button class="btn btn-secondary m-1" (click)="delDest(idx)">Delete</button>
+            <button class="btn btn-primary" (click)="suggestHotels(i['name'],hotelsModal)">Suggest Hotels</button>
+        </div>
+    </div>
 </div>
-    <button (click)="isNewDest=true">Add dest</button>
+    
     <div *ngIf="isNewDest">
         <label>Dest Name: </label>
         <input #destName type="text"/>
@@ -26,4 +27,18 @@
         <button (click)="isNewDest=false">Cancel</button>
         <button (click)="addNewDest(destName.value,fromDate.value,toDate.value)">Save</button>
     </div>
+    <ng-template #hotelsModal let-modal class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <ul class="d-flex row" *ngFor="let i of hotels;index as idx">
+            <li class="col-12">
+                {{i.hotel_name}} :
+                <p>{{i.address}}</p> 
+                <p> Address : {{i.desc}}</p>
+               
+            </li>
+        </ul>
+        <button (click)="modal.close()">Close</button>
+    </ng-template>
+    <button class="btn btn-dark m-1" (click)="isNewDest=true">Add dest</button>
+    <button class="btn btn-success m-1" (click)="saveItinerary()">Save Itinerary</button>
+    
 </div>
